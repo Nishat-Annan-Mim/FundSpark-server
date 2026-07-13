@@ -9,9 +9,11 @@ const {
   updateCampaign,
   deleteCampaign,
   getCampaignById,
+  getExploreCampaigns,
 } = require("../controllers/campaignController");
 
 router.get("/top", getTopCampaigns);
+router.get("/explore", getExploreCampaigns);
 router.get(
   "/my-campaigns",
   verifySession,
