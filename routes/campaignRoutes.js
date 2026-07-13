@@ -10,6 +10,11 @@ const {
   deleteCampaign,
   getCampaignById,
   getExploreCampaigns,
+  getPendingCampaigns,
+  approveCampaignAdmin,
+  rejectCampaignAdmin,
+  getAllCampaigns,
+  deleteCampaignAdmin,
 } = require("../controllers/campaignController");
 
 router.get("/top", getTopCampaigns);
@@ -19,6 +24,26 @@ router.get(
   verifySession,
   verifyRole("creator"),
   getMyCampaigns,
+);
+router.get("/pending", verifySession, verifyRole("admin"), getPendingCampaigns);
+router.get("/all", verifySession, verifyRole("admin"), getAllCampaigns);
+router.put(
+  "/:id/approve",
+  verifySession,
+  verifyRole("admin"),
+  approveCampaignAdmin,
+);
+router.put(
+  "/:id/reject",
+  verifySession,
+  verifyRole("admin"),
+  rejectCampaignAdmin,
+);
+router.delete(
+  "/:id/admin-delete",
+  verifySession,
+  verifyRole("admin"),
+  deleteCampaignAdmin,
 );
 router.post("/", verifySession, verifyRole("creator"), createCampaign);
 router.put("/:id", verifySession, verifyRole("creator"), updateCampaign);
