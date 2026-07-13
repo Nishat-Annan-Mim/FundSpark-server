@@ -21,7 +21,7 @@ app.use(cookieParser());
 connectDB();
 
 // Routes (we'll wire these up as we build them)
-// app.use("/api/campaigns", require("./routes/campaignRoutes"));
+app.use("/api/campaigns", require("./routes/campaignRoutes"));
 // app.use("/api/contributions", require("./routes/contributionRoutes"));
 // app.use("/api/withdrawals", require("./routes/withdrawalRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
