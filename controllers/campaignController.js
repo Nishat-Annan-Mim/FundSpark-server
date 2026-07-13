@@ -137,6 +137,30 @@ const getCampaignById = async (req, res) => {
   }
 };
 
+// Public/Supporter: all approved campaigns with deadline not passed
+const getExploreCampaigns = async (req, res) => {
+  try {
+    const { category, search } = req.query;
+
+    const filter = {
+      status: "approved",
+      deadline: { $gte: new Date() },
+    };
+
+    if (category && category !== "all") {
+      filter.category = category;
+    }
+    if (search) {
+      filter.campaign_title = { $regex: search, $options: "i" };
+    }
+
+    const campaigns = await Campaign.find(filter).sort({ createdAt: -1 });
+    res.status(200).json(campaigns);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   getTopCampaigns,
   createCampaign,
@@ -144,4 +168,5 @@ module.exports = {
   updateCampaign,
   deleteCampaign,
   getCampaignById,
+  getExploreCampaigns,
 };
