@@ -25,6 +25,7 @@ app.use("/api/campaigns", require("./routes/campaignRoutes"));
 app.use("/api/contributions", require("./routes/contributionRoutes"));
 app.use("/api/withdrawals", require("./routes/withdrawalRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/notifications", require("./routes/notificationRoutes"));
 // app.use("/api/notifications", require("./routes/notificationRoutes"));
 app.use("/api/payments", require("./routes/paymentRoutes"));
 app.use("/api/reports", require("./routes/reportRoutes"));
