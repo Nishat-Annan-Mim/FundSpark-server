@@ -27,7 +27,7 @@ app.use("/api/withdrawals", require("./routes/withdrawalRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 // app.use("/api/notifications", require("./routes/notificationRoutes"));
 app.use("/api/payments", require("./routes/paymentRoutes"));
-
+app.use("/api/reports", require("./routes/reportRoutes"));
 app.get("/", (req, res) => {
   res.send("Crowdfunding Platform API is running");
 });
